@@ -1,0 +1,197 @@
+{
+    "data_processing": {
+        "average_errors": 41,
+        "no_access_sites": "91.48",
+        "internet_perception": [
+            {
+                "Facilite votre vie quotidienne": "67.99"
+            },
+            {
+                "Complique votre vie quotidienne": "12.76"
+            },
+            {
+                "N’a pas d’effet sur votre vie quotidienne": "19.25"
+            }
+        ],
+        "accessibility_users": [
+            {
+                "Oui": "82.33"
+            },
+            {
+                "Non": "17.67"
+            }
+        ],
+        "difficulty": [
+            {
+                "Vous vous débrouillez seul": "39.15"
+            },
+            {
+                "Vous n'avez pas de difficultés particulières": "12.74"
+            },
+            {
+                "Vous demandez de l'aide à quelqu'un de votre entourage (famille, amis, voisins...)": "12.74"
+            },
+            {
+                "Vous arrêtez votre utilisation, vous abandonnez": "4.08"
+            },
+            {
+                "Vous demandez de l'aide à quelqu'un au sein de votre foyer": "16.67"
+            },
+            {
+                "Vous payez quelqu'un pour vous aider": "1.24"
+            },
+            {
+                "Vous demandez de l'aide à des collègues": "2.59"
+            },
+            {
+                "Vous n'utilisez jamais d'outils informatiques et numériques": "5.42"
+            },
+            {
+                "Vous vous adressez à un professionnel ou un bénévole présent dans un lieu public d'accès à internet (conseiller numériqu": "2.19"
+            },
+            {
+                "Vous vous adressez à un vendeur de matériel informatique": "2.44"
+            },
+            {
+                "[Nsp]": "0.75"
+            }
+        ],
+        "world_cloud": [
+            {
+                "year": "2020",
+                "percentages": [
+                    {
+                        "limit": "Pas d'équipement",
+                        "oui": "7.02",
+                        "non": "92.98"
+                    },
+                    {
+                        "limit": "Pas ou peu d'accès internet",
+                        "oui": "7.81",
+                        "non": "92.19"
+                    },
+                    {
+                        "limit": "Équipement obsolète",
+                        "oui": "9.96",
+                        "non": "90.04"
+                    },
+                    {
+                        "limit": "Manque de maîtrise des outils",
+                        "oui": "16.77",
+                        "non": "83.23"
+                    },
+                    {
+                        "limit": "Aucun frein",
+                        "oui": "57.29",
+                        "non": "42.71"
+                    },
+                    {
+                        "limit": "Pas utile pour moi",
+                        "oui": "0.00",
+                        "non": "100.00"
+                    },
+                    {
+                        "limit": "Coût trop élevé",
+                        "oui": "0.00",
+                        "non": "100.00"
+                    },
+                    {
+                        "limit": "Rejet du numérique",
+                        "oui": "0.00",
+                        "non": "100.00"
+                    }
+                ]
+            },
+            {
+                "year": "2022",
+                "percentages": [
+                    {
+                        "limit": "Pas d'équipement",
+                        "oui": "6.99",
+                        "non": "93.01"
+                    },
+                    {
+                        "limit": "Pas ou peu d'accès internet",
+                        "oui": "6.51",
+                        "non": "93.49"
+                    },
+                    {
+                        "limit": "Équipement obsolète",
+                        "oui": "10.62",
+                        "non": "89.38"
+                    },
+                    {
+                        "limit": "Manque de maîtrise des outils",
+                        "oui": "21.61",
+                        "non": "78.39"
+                    },
+                    {
+                        "limit": "Aucun frein",
+                        "oui": "45.30",
+                        "non": "54.70"
+                    },
+                    {
+                        "limit": "Pas utile pour moi",
+                        "oui": "0.00",
+                        "non": "100.00"
+                    },
+                    {
+                        "limit": "Coût trop élevé",
+                        "oui": "0.00",
+                        "non": "100.00"
+                    },
+                    {
+                        "limit": "Rejet du numérique",
+                        "oui": "0.00",
+                        "non": "100.00"
+                    }
+                ]
+            },
+            {
+                "year": "2023",
+                "percentages": [
+                    {
+                        "limit": "Pas d'équipement",
+                        "oui": "8.22",
+                        "non": "91.78"
+                    },
+                    {
+                        "limit": "Pas ou peu d'accès internet",
+                        "oui": "8.12",
+                        "non": "91.88"
+                    },
+                    {
+                        "limit": "Équipement obsolète",
+                        "oui": "13.22",
+                        "non": "86.78"
+                    },
+                    {
+                        "limit": "Manque de maîtrise des outils",
+                        "oui": "25.45",
+                        "non": "74.55"
+                    },
+                    {
+                        "limit": "Aucun frein",
+                        "oui": "54.90",
+                        "non": "45.10"
+                    },
+                    {
+                        "limit": "Pas utile pour moi",
+                        "oui": "10.69",
+                        "non": "89.31"
+                    },
+                    {
+                        "limit": "Coût trop élevé",
+                        "oui": "21.34",
+                        "non": "78.66"
+                    },
+                    {
+                        "limit": "Rejet du numérique",
+                        "oui": "9.50",
+                        "non": "90.50"
+                    }
+                ]
+            }
+        ]
+    }
+}
