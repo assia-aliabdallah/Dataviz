@@ -23,7 +23,7 @@
 }
 
 * {
-    cursor: url(/img/cursor.png), auto !important;
+    cursor: url(img/cursor.png), auto !important;
 }
 
 
@@ -227,13 +227,13 @@ header a:not(.dropdown-content a, .logo-container a):hover::before {
 }
 
 .chevron {
-    background-image: url(/img/chevron-down.svg);
+    background-image: url(img/chevron-down.svg);
     width: 20px;
     height: 20px;
 }
 
 .dropdown:hover .chevron {
-    background-image: url(/img/chevron-up.svg);
+    background-image: url(img/chevron-up.svg);
 }
 
 .dropdown-content {
@@ -536,11 +536,11 @@ main a:hover {
     }
 
     .nav-list .dropdown .chevron {
-        background-image: url(/img/chevron-down-white.svg);
+        background-image: url(img/chevron-down-white.svg);
     }
 
     .nav-list .dropdown.active .chevron {
-        background-image: url(/img/chevron-up-white.svg);
+        background-image: url(img/chevron-up-white.svg);
     }
 
     .dropdown-content {
