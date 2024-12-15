@@ -4,15 +4,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access+</title>
+    <title>Pour un web vraiment universel | Access+</title>
+    <script src="https://cdn.jsdelivr.net/npm/wordcloud@1.1.0"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Access+" />
+    <link rel="manifest" href="/img/favicon/site.webmanifest" />
 </head>
-<body>
 
+<body>
+    <div class="sr-only not-sr-only">
+        <a href="#content">
+            Aller au contenu
+        </a>
+    </div>
+    <header>
+        <div class="logo-container">
+            <a href="index.html">
+                <span class="sr-only">Accueil</span>
+                <div class="logo"></div>
+            </a>
+
+        </div>
+        <div class="menu" tabindex="0">
+            <span class="sr-only">Menu de navigation</span>
+            <div class="burger">
+                <div class="burger_line line1"></div>
+                <div class="burger_line line2"></div>
+                <div class="burger_line line3"></div>
+            </div>
+        </div>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <div class="dropbtn">
+                        <span tabindex="0" class="link">Handicaps</span>
+                        <div class="chevron"></div>
+                    </div>
+                    <ul class="dropdown-content">
+                        <li><a href="/index.html#visual">Visuel</a></li>
+                        <li><a href="/index.html#physical">Moteur</a></li>
+                        <li><a href="/index.html#hearing">Auditif</a></li>
+                        <li><a href="/index.html#cognitive">Cognitif</a></li>
+                        <li><a href="/index.html#intelPsych">Intellectuel et Psychique</a></li>
+                    </ul>
+                </li>
+                <li><a href="views/about.html">À propos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="header-container">
+        <div class="title" id="content">
+            <h1>Parce que <span class="highlight">l'accessibilité</span> n'est pas une option</h1>
+            <p>En 2024, l'audit automatisé réalisé par le logiciel libre Asqatasun détecte en moyenne <span
+                    id="average_errors"></span> erreurs d'accessibilité sur les 117/257 tests du RGAA.</p>
+            <a href="index.html#learnMore" class="btn">En savoir+</a>
+            <div class="tips-container">
+                <div class="tips-txt">Agissons<br>ensemble</div>
+                <div class="tips-line">
+                    <svg width="36px" height="34px" viewBox="0 0 36 34" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Hero" transform="translate(-366.000000, -213.000000)" stroke="#221F20"
+                                stroke-width="1.8">
+                                <path
+                                    d="M398.303812,248.386611 C386.908479,243.879035 379.582435,239.463222 376.325681,235.139171 C373.068928,230.815121 371.088357,222.874375 370.383969,211.316935"
+                                    id="Path-Cause-Right"
+                                    transform="translate(384.343890, 229.851773) rotate(-9.000000) translate(-384.343890, -229.851773) ">
+                                </path>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="img-container">
+            <img src="/img/accessibility-illustration.svg" alt="">
+        </div>
+    </div>
+    </div>
+    <main>
+        <div id="learnMore" class="internet-effects">
+            <h2>Malheureusement, près de <span class="color"> <span id="no_access_sites"></span>% des sites
+                    publics français</span> ont échoué à ce test d'accessibilité</h2>
+            <p>En France, près de <span id="perception"></span>% des Français soit <span id="population"></span>
+                habitants ont eu une perception négative d'Internet en 2023.
+            </p>
+            <div class="legend">
+                <p><span class="higlight" id="good_effect"></span>% Facilite leur vie quotidienne<br>
+                    <span class="higlight" id="normal_effect"></span>% N’a pas d’effet sur leur vie quotidienne
+                    <br>
+                    <span class="higlight" id="bad_effect"></span>% Complique leur vie quotidienne
+                </p>
+            </div>
+            <div class="histogram-container">
+                <div class="bar good" id="goodBar"></div>
+                <div class="bar normal" id="normalBar"></div>
+                <div class="bar bad" id="badBar"></div>
+            </div>
+        </div>
+
+        <div class="how-container">
+            <h2>Comment garantir l'accessibilité pour tous ?</h2>
+            <p>Il est important de comprendre qu'il existe plusieurs types de handicaps, chacun présentant des
+                défis
+                uniques en termes d'accessibilité. Parmi les principales catégories, on trouve la déficience
+                psychique,
+                intellectuelle, visuelle, motrice, auditive, ainsi que les allergies, les maladies invalidantes
+                et les
+                maladies cardiovasculaires. Chacune de ces catégories nécessite une approche spécifique, car les
+                obstacles rencontrés par les personnes en situation de handicap varient considérablement. Par
+                conséquent, les solutions d'accessibilité doivent être adaptées à chaque type de handicap pour
+                garantir
+                une réelle inclusion numérique.</p>
+        </div>
+
+        <div id="visual">
+            <div>
+                <h2>La déficience visuelle</h2>
+                <div>
+                    <h3>Altérations de la vision globale</h3>
+                    <p>Les altérations de la vision globale concernent les personnes ayant une vision totallement ou
+                        partiellement obstruée, floue ou perturbée, que cela soit de manière permanente ou temporaire,
+                        comme lorsqu’un écran est ébloui par le soleil. Certaines individus ne perçoivent qu’une partie
+                        de leur champ visuel, tandis que d'autres voient des zones déformées ou floues.</p>
+                    <a href="https://lighthousefw.org/vision-simulator/" target="_blank"
+                        title="Nouvelle fenêtre">Accédez au simulateur de vision globale</a>
+                </div>
+                <div>
+                    <h3>Altérations de la perception des couleurs</h3>
+                    <p>Les altérations de la perception des couleurs concernent quant à elles les personnes voyant des
+                        couleurs de manière différente, comme dans le cas de l'achromatopsie, où la vision des couleurs
+                        est totalement absente, ou des troubles tels que la deuteranomalie, la deuteranopie, la
+                        protanopie, la protanomalie, la tritanopie et la tritanomalie. Ces conditions entraînent des
+                        difficultés à distinguer certaines couleurs ou à percevoir des nuances spécifiques, affectant
+                        ainsi l'expérience visuelle et la capacité à identifier les objets en fonction de leurs
+                        couleurs.</p>
+                    <a href="https://www.color-blindness.com/coblis-color-blindness-simulator/" target="_blank"
+                        title="Nouvelle fenêtre">Accédez au simulateur de perception des couleurs</a>
+                </div>
+                <p>Les personnes confrontées à ces problèmes utilisent des technologies d’assistance. Il est donc
+                    essentiel de s’assurer que le focus soit compatible avec ces technologies. Les informations doivent
+                    également être transmises autrement que par la seule utilisation de la couleur, par exemple grâce à
+                    des contrastes suffisants ou des symboles. L’idéal serait de permettre à l’utilisateur de
+                    personnaliser l’interface en adaptant l’éclairage et les contrastes.</p>
+            </div>
+            <figure>
+                <img src="/img/visual.jpg" alt="">
+                <figcaption>Source:</figcaption>
+            </figure>
+        </div>
+
+        <div id="physical">
+            <h2>La déficience motrice</h2>
+            <p>La déficience motrice, dans le cadre de l'accessibilité numérique, concerne principalement les personnes
+                âgées souffrant de tremblements de la main. Ces tremblements peuvent rendre difficile l'utilisation de
+                dispositifs de pointage, comme la souris, en entraînant une instabilité dans le mouvement du
+                curseur.<br><br>Pour aider ces utilisateurs, il est essentiel de permettre une navigation par focus, en s'assurant que
+                ce dernier soit clairement visible par rapport aux autres éléments de l'interface. Par ailleurs, la zone
+                cliquable d'un élément doit être d'au moins 24 px par 24 px.</p>
+            <a href="https://www.atalan.fr/agissons/fr/handicap-moteur.html" target="_blank"
+                title="Nouvelle fenêtre">Accédez au simulateur de déficience motrice</a>
+            <figure>
+                <img src="/img/physical.jpg" alt="">
+                <figcaption>Source:</figcaption>
+            </figure>
+        </div>
+
+        <div id="hearing">
+            <h2>La déficience auditive</h2>
+            <p>La déficience auditive se réfère à la perte, qu'elle soit permanente ou temporaire, de la capacité
+                auditive. Elle touche notamment les personnes souffrant de surdité, qui peuvent éprouver des difficultés
+                à entendre les sons de haute fréquence, à distinguer les bruits dans un environnement bruyant, à
+                percevoir certaines amplitudes sonores, ou encore à capter l'ensemble du spectre sonore.<br><br>Pour améliorer l'accessibilité des personnes malentendantes, il est essentiel de proposer des
+                retranscriptions textuelles des contenus audio, permettant ainsi aux utilisateurs de suivre
+                l'information sans dépendre de la perception sonore.</p>
+            <a href="https://www.starkey.com/hearing-loss-simulator/simulator" target="_blank"
+                title="Nouvelle fenêtre">Accédez au simulateur de déficience auditive</a>
+            <figure>
+                <img src="/img/hearing.jpg" alt="">
+                <figcaption>Source:</figcaption>
+            </figure>
+        </div>
+
+        <div id="cognitive">
+            <h2>La déficience cognitive</h2>
+            <p>La déficience cognitive est décrite comme étant la perte d'efficacité d'une ou plusieurs fonctions cognitives,
+                de manière temporaire ou permanente. Cela peut affecter plusieurs zones cérébrales, telles que la
+                mémoire, le langage, la perception et l’attention, impactant ainsi la capacité d'une personne à
+                effectuer ses tâches quotidiennes, à communiquer et/ou à entretenir des relations. Les troubles cognitifs
+                les plus fréquents incluent la dyslexie, la surcharge sensorielle (notamment chez les personnes
+                autistes) et l’épilepsie.<br><br>Il est donc essentiel d'éviter les animations trop perturbantes et
+                distrayantes, ainsi que les pop-ups incontrôlables ou les publicités qui se lancent seules. Les
+                changements brusques de lumière doivent également être évités, en limitant la fréquence des effets à
+                moins de 3 secondes et en veillant à ce que la surface totale cumulée ne dépasse pas 21 824 pixels.
+                De plus, l'ajout de polices adaptées, surtout pour les dyslexiques, est essentiel pour rendre
+                l'information plus accessible.</p>
+            <a href="https://psynap6.ch/simulation/" target="_blank" title="Nouvelle fenêtre">Accédez au simulateur de
+                déficience cognitive</a>
+            <figure>
+                <img src="/img/cognitive.jpg" alt="">
+                <figcaption>Source:</figcaption>
+            </figure>
+        </div>
+
+        <div id="intelPsych">
+            <h2>Les déficiences intellectuelle et psychique</h2>
+            <p>La déficience intellectuelle désigne un retard mental dès l'enfance, caractérisé par un fonctionnement intellectuel inférieur à la moyenne, comme c'est le cas chez les personnes atteintes de trisomie 21.<br><br>La déficience psychique désigne l'incapacité à mobiliser correctement les fonctions intellectuelles, souvent liée à des traumatismes graves ou des maladies mentales. On peut y inclure des troubles tels que la dépression, la psychose, les troubles bipolaires, les troubles de la personnalité, etc. Cela impactent principalement la pensée, l'humeur et le comportement d'une personne.<br><br>
+                Il est important d’utiliser des textes simples accompagnés d'images explicatives. Des synthèses vocales, des vidéos, et la répétition des informations clés rendent la compréhension plus facile. Les boutons visibles et une interface intuitive évitent la surcharge visuelle. Les messages doivent être rassurants, avec un son calme, sans pop-ups ni lumières clignotantes. Des feedbacks positifs et une option de chat offrent un soutien supplémentaire et renforcent l'expérience utilisateur.</p>
+            <figure>
+                <img src="/img/intelPsych.jpg" alt="">
+                <figcaption>Source:</figcaption>
+            </figure>
+        </div>
+
+        <div class="info-container">
+            <img src="/img/info.svg" alt="">
+            <p><strong>À savoir: </strong><span
+                    id="accessibility_users"></span>% des Français utilisent au moins un outil d'accessibilité numérique, incluant les synthèses vocales, l'audiodescription, le zoom, le réglage de la taille de police, l'inversion des couleurs, le mode sombre, l'augmentation des contrastes, le réglage de la luminosité de l'écran et les commandes vocales.</p>
+        </div>
+
+        <div class="abandon">
+            <h2><span id="percent-abandon"></span>% des personnes abandonnent face aux difficultés numériques
+                rencontrées en 2023</h2>
+            <div class="word-cloud">
+                <h2>Qu'est-ce qui les pousse à abandonner ?</h2>
+
+                <div class="year-selector">
+                    <span class="wc-arrow" id="prev-year">←</span>
+                    <span id="year-display">2020</span>
+                    <span class="wc-arrow" id="next-year">→</span>
+                </div>
+                <div id="wc-container"></div>
+
+            </div>
+        </div>
+
+        <div class="illectronisme">
+            <h2>L'illectronisme : une conséquence directe du manque d'accessibilité</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nostrum id velit ipsam
+                exercitationem repudiandae voluptates maiores perferendis dolores pariatur.</p>
+        </div>
+    </main>
+    <script src="scripts/data-display.js"></script>
+    <script src="scripts/burgerMenu.js"></script>
 </body>
+<footer>
+</footer>
+
 </html>
