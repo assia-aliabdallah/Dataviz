@@ -100,17 +100,21 @@
             <p>En France, près de <span id="perception"></span>% des Français soit <span id="population"></span>
                 habitants ont eu une perception négative d'Internet en 2023.
             </p>
-            <div class="legend">
-                <p><span class="green-color"><span id="good_effect"></span>%</span> Facilite leur vie quotidienne<br>
-                    <span class="yellow-color"><span id="normal_effect"></span>%</span> N’a pas d’effet sur leur vie quotidienne
-                    <br>
-                    <span class="red-color"><span id="bad_effect"></span>%</span> Complique leur vie quotidienne
-                </p>
-            </div>
-            <div class="histogram-container">
-                <div class="bar good" id="goodBar"></div>
-                <div class="bar normal" id="normalBar"></div>
-                <div class="bar bad" id="badBar"></div>
+            <div class="histogram">
+                <div class="legend">
+                    <p><span class="green-color"><span id="good_effect"></span>%</span> Facilite leur vie
+                        quotidienne<br>
+                        <span class="yellow-color"><span id="normal_effect"></span>%</span> N’a pas d’effet sur leur vie
+                        quotidienne
+                        <br>
+                        <span class="red-color"><span id="bad_effect"></span>%</span> Complique leur vie quotidienne
+                    </p>
+                </div>
+                <div class="histogram-container">
+                    <div class="bar good" id="goodBar"><img src="./img/good.svg" alt=""></img></div>
+                    <div class="bar normal" id="normalBar"><img src="./img/normal.svg" alt=""></img></div>
+                    <div class="bar bad" id="badBar"><img src="./img/bad.svg" alt=""></img></div>
+                </div>
             </div>
         </div>
 
@@ -277,11 +281,13 @@
                 <h2>Qu'est-ce qui les pousse à abandonner ?</h2>
 
                 <div class="year-selector">
-                    <span class="wc-arrow" id="prev-year">←</span>
-                    <span id="year-display">2020</span>
-                    <span class="wc-arrow" id="next-year">→</span>
+                    <span class="wc-arrow arrow-l" id="prev-year"></span>
+                    <span id="year-display">2023</span>
+                    <span class="wc-arrow arrow-r" id="next-year"></span>
                 </div>
-                <div id="wc-container"></div>
+                <div style="width: 100%; height: 380px;">
+                    <canvas id="wc-container" width="100%" height="100%"></canvas>
+                </div>
 
             </div>
         </div>
@@ -298,6 +304,7 @@
 
         </div>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.1.0/wordcloud2.js"></script>
     <script src="./scripts/data-display.js"></script>
     <script src="./scripts/burgerMenu.js"></script>
 </body>
