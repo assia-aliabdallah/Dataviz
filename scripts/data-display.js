@@ -38,60 +38,103 @@ document.addEventListener('DOMContentLoaded', function () {
             percentAbandon.innerHTML = data.data_processing.difficulty[3]["Vous arrêtez votre utilisation, vous abandonnez"]
 
             //Dessiner l'histogramme des effets de l'internet sur la vie quotidienne
-            //let goodValue = parseFloat(data.data_processing.internet_perception[0]["Facilite votre vie quotidienne"]);
-            //let badValue = parseFloat(data.data_processing.internet_perception[1]["Complique votre vie quotidienne"]);
-            //let normalValue = parseFloat(data.data_processing.internet_perception[2]["N’a pas d’effet sur votre vie quotidienne"]);
-            //
-            //let goodBar = document.getElementById("goodBar");
-            //let normalBar = document.getElementById("normalBar");
-            //let badBar = document.getElementById("badBar");
-            //
-            //goodBar.style.height = goodValue + "%";
-            //normalBar.style.height = normalValue + "%";
-            //badBar.style.height = badValue + "%";
-            //
-            ////Dessiner le nuage de mot de la raison de l'abandon
-            //let currentYearIndex = 0; // start with 2020
-            //
-            //// Fonction pour créer le nuage de mots
-            //function createWordCloud(yearData) {
-            //    const words = yearData.map(item => ({
-            //        text: item.limit,
-            //        weight: parseFloat(item.oui),
-            //        link: "#"
-            //    }));
-            //    WordCloud(document.getElementById('wc-container'), {
-            //        list: words,
-            //        gridSize: 8,
-            //        weightFactor: 20,
-            //        fontFamily: 'Times, serif',
-            //        color: 'random-dark'
-            //    });
-            //}
-            //
-            //// Fonction pour mettre à jour l'année et le nuage de mots
-            //function changeYear(direction) {
-            //    currentYearIndex += direction;
-            //    if (currentYearIndex < 0) currentYearIndex = 0;
-            //    if (currentYearIndex >= data.data_processing.world_cloud.length) currentYearIndex = data.data_processing.world_cloud.//length - 1;
-            //
-            //    const selectedYear = data.data_processing.world_cloud[currentYearIndex];
-            //    document.getElementById('year-display').textContent = selectedYear.year;
-            //
-            //    // Appel à la fonction pour créer le nuage de mots pour l'année sélectionnée
-            //    createWordCloud(selectedYear.percentages);
-            //}
-            //
-            //// Initialiser le nuage de mots pour la première année (2020)
-            //createWordCloud(data.data_processing.world_cloud[currentYearIndex].percentages);
-            //
-            //// Attacher les événements de navigation aux flèches après la définition de la fonction
-            //document.getElementById('prev-year').addEventListener('click', function() {
-            //    changeYear(-1);
-            //});
-            //document.getElementById('next-year').addEventListener('click', function() {
-            //    changeYear(1);
-            //});
+            let goodValue = parseFloat(data.data_processing.internet_perception[0]["Facilite votre vie quotidienne"]);
+            let badValue = parseFloat(data.data_processing.internet_perception[1]["Complique votre vie quotidienne"]);
+            let normalValue = parseFloat(data.data_processing.internet_perception[2]["N’a pas d’effet sur votre vie quotidienne"]);
+
+            let goodBar = document.getElementById("goodBar");
+            let normalBar = document.getElementById("normalBar");
+            let badBar = document.getElementById("badBar");
+
+            goodBar.style.height = goodValue + "%";
+            normalBar.style.height = normalValue + "%";
+            badBar.style.height = badValue + "%";
+
+            //Dessiner le nuage de mot de la raison de l'abandon
+            function adjustCanvasForDPR(canvas) {
+                let dpr = window.devicePixelRatio || 1;
+                let parent = canvas.parentNode;
+                let rect = parent.getBoundingClientRect();
+
+                canvas.style.width = `${rect.width}px`;
+                canvas.style.height = `${rect.height}px`;
+
+                canvas.width = rect.width * dpr;
+                canvas.height = rect.height * dpr;
+
+                return dpr;
+            }
+
+            function generateWordCloudList(year) {
+                let wordCloudList = [];
+                data.data_processing.world_cloud.forEach(years => {
+                    if (years.year === year) {
+                        years.percentages.forEach(entry => {
+                            console.log(entry);
+                            const word = entry.limit;
+                            const ouiPercentage = parseFloat(entry.oui);
+
+                            if (ouiPercentage > 0) {
+                                const weight = Math.round(ouiPercentage * 2);
+                                wordCloudList.push([word, weight]);
+                            }
+                        });
+                    }
+                });
+                return wordCloudList;
+            };
+
+            function createWordCloud(year) {
+                let wordcloud = document.getElementById('wc-container');
+                let dpr = adjustCanvasForDPR(wordcloud);
+                let wordCloudList = generateWordCloudList(year);
+                let customColors = ['#231E78', '#FFC540', '#27CCBC', '#584DFF', '#F58CC8'];
+
+                WordCloud(wordcloud, {
+                    list: wordCloudList,
+                    gridSize: Math.round(15 * dpr),
+                    weightFactor: (size) => size * dpr,
+                    fontFamily: 'Ubuntu',
+                    color: () => customColors[Math.floor(Math.random() * customColors.length)],
+                    backgroundColor: '#f8f6f9',
+                    rotateRatio: 0,
+                    rotationSteps: 0,
+                    drawOutOfBound: false,
+                });
+            }
+
+            function WordCloudYears() {
+                let prevYear = document.getElementById('prev-year');
+                let nextYear = document.getElementById('next-year');
+                let yearDisplay = document.getElementById('year-display');
+
+                const years = ["2020", "2022", "2023"];
+
+                let currentYear = yearDisplay.textContent;
+
+                createWordCloud(currentYear);
+
+                prevYear.addEventListener('click', () => {
+                    let prevIndex = years.indexOf(currentYear) - 1;
+                    if (prevIndex >= 0) {
+                        currentYear = years[prevIndex];
+                        yearDisplay.textContent = currentYear;
+                        createWordCloud(currentYear);
+                    }
+                });
+
+                nextYear.addEventListener('click', () => {
+                    let nextIndex = years.indexOf(currentYear) + 1;
+                    if (nextIndex < years.length) {
+                        currentYear = years[nextIndex];
+                        yearDisplay.textContent = currentYear;
+                        createWordCloud(currentYear);
+                    }
+                });
+            }
+
+            WordCloudYears();
+
         }
         )
 
